@@ -1,0 +1,36 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        uses: googleapis/release-please-action@v4
+        with:
+          release-type: node
+          package-name: sports-streaming-app
+          bump-minor-pre-major: true
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+
+  automerge:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' &&
+      startsWith(github.event.pull_request.title, 'chore(main): release') &&
+      contains(join(github.event.pull_request.labels.*.name, ','), 'autorelease: pending')
+    steps:
+      - name: Enable auto-merge for release PRs
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          pull-request-number: ${{ github.event.pull_request.number }}
+          merge-method: squash
