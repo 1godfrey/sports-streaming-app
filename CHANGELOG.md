@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/1godfrey/sports-streaming-app/compare/v1.0.0...v1.1.0) (2025-04-29)
+
+
+### Features
+
+* add delete feature branch workflow ([6dfeb4d](https://github.com/1godfrey/sports-streaming-app/commit/6dfeb4d852d4ad3c18b1ae8d6262dfa58869e4c9))
+* add delete feature branch workflow ([5a9f3c8](https://github.com/1godfrey/sports-streaming-app/commit/5a9f3c8d092154a3b4483fe7ef33aba65afe7795))
+
 ## 1.0.0 (2025-04-29)
 
 
