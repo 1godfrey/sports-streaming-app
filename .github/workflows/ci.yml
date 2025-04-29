@@ -6,22 +6,28 @@ on:
       - main
 
 jobs:
-  build:
+  ci-checks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.9'
+          node-version: '20'  # 20.x is great for Vite projects
 
-    #   - name: Install dependencies
-    #     run: |
-    #       python -m pip install --upgrade pip
-    #       pip install -r requirements.txt
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Run tests
-        run: |
-          echo "Add tests here. For now success!✅"
+      # - name: Run TypeScript type checking
+      #   run: npm run check
+
+      # - name: Run linter
+      #   run: npm run lint
+
+      # - name: Run tests (optional if you have tests)
+      #   run: npm test -- --watchAll=false
+
+      # - name: Build project
+      #   run: npm run build
