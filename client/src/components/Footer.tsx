@@ -10,7 +10,7 @@ export default function Footer() {
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                 <i className="fas fa-play text-white text-xs"></i>
               </div>
-              <span className="font-bold text-lg">Amateur Sports FAST</span>
+              <span className="font-bold text-lg">King Sports</span>
             </div>
             <p className="text-gray-400 text-sm">
               A free, fast-streaming platform for amateur sports games worldwide. Watch live games, browse highlights, and upload your own content.
@@ -49,7 +49,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} Amateur Sports FAST. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© {new Date().getFullYear()} King Sports. All rights reserved.</p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <a href="#" className="text-gray-400 hover:text-primary transition">
               <i className="fab fa-facebook"></i>

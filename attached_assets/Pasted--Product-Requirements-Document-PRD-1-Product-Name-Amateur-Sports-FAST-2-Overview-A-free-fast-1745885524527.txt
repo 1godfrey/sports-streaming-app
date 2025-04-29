@@ -1,6 +1,6 @@
 📄 Product Requirements Document (PRD)
 1. Product Name
-Amateur Sports FAST
+King Sports
 
 2. Overview
 A free, fast-streaming platform for amateur sports games worldwide.

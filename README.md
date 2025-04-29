@@ -1,7 +1,7 @@
-# 🏟️ Amateur Sports FAST - Free Streaming Platform
+# 🏟️ King Sports - Free Streaming Platform
 
 🚀 **Project Overview**  
-Amateur Sports FAST is a modern, lightweight video streaming platform built to showcase amateur sports games and highlights from around the world — for free.
+King Sports is a modern, lightweight video streaming platform built to showcase amateur sports games and highlights from around the world — for free.
 
 📺 **Watch Live Games**
 

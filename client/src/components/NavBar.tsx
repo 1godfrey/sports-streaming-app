@@ -16,7 +16,7 @@ export default function NavBar() {
           <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
             <i className="fas fa-play text-white"></i>
           </div>
-          <span className="font-bold text-xl">Amateur Sports FAST</span>
+          <span className="font-bold text-xl">King Sports</span>
         </Link>
         
         {/* Desktop Navigation */}
