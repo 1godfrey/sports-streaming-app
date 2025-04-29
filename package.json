@@ -10,7 +10,8 @@
     "check": "tsc",
     "db:push": "drizzle-kit push",
     "seed": "dotenv -e .env -- tsx scripts/seed.ts",
-    "test_conn": "dotenv -e .env -- tsx scripts/test_conn.ts"
+    "test_conn": "dotenv -e .env -- tsx scripts/test_conn.ts",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
@@ -98,11 +99,14 @@
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
     "@types/ws": "^8.5.13",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
     "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
     "dotenv-cli": "^8.0.0",
     "esbuild": "^0.25.0",
+    "eslint": "^9.25.1",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.1",
