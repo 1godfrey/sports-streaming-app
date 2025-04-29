@@ -1,0 +1,7 @@
+Fix video previews and enable playing sample videos to improve user experience
+
+Updates video URLs and adds game/highlight properties in MemStorage class to address preview/playback issues.
+
+Replit-Commit-Author: Agent
+Replit-Commit-Session-Id: 93876020-13d1-4358-af27-eb29a6eebf8d
+Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/4cc8c4f6-0e4b-4d5c-87ff-7be208c68676/6c963957-1292-49ad-852c-82fce014ebca.jpg

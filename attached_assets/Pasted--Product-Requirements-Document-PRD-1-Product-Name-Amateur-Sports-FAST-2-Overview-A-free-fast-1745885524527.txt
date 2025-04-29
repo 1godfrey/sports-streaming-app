@@ -1,0 +1,119 @@
+📄 Product Requirements Document (PRD)
+1. Product Name
+Amateur Sports FAST
+
+2. Overview
+A free, fast-streaming platform for amateur sports games worldwide.
+Users can watch live games, browse highlight clips, and upload their own games to be featured on the platform.
+The service will generate revenue through ad monetization and user-generated content at scale.
+
+3. Key Features
+
+Feature	Description
+Hero Section	Big featured game or video banner on homepage
+Live Now Section	List of games currently streaming live
+Highlights Section	Pre-recorded best moments & short clips
+Upload Game	Allow teams/players to upload games (basic form)
+Sports Filtering	Browse games by sport (Soccer, Basketball, MMA, etc.)
+Responsive Design	Works seamlessly on mobile and desktop
+4. User Journeys
+Visitor arrives at the homepage → sees "Live Now" streams → clicks and watches a game.
+
+Visitor explores "Highlights" → watches short clips.
+
+Amateur team uploads their own game via the Upload Game form.
+
+5. Tech Stack
+
+Layer	Choice
+Frontend	Next.js (App Router)
+Styling	Tailwind CSS
+Backend	Next.js server actions (or API routes)
+Database	MongoDB Atlas Free Tier
+Hosting	Vercel (initial)
+Video Player	react-player (open-source lightweight player)
+6. Pages/Routes
+
+Path	Purpose
+/	Homepage (Hero, Live Now, Highlights, Upload CTA)
+/live	Dedicated page for all live streams
+/sports/[sport]	View games filtered by sport type
+/upload	Upload Game form page
+7. Data Models
+Games Collection
+json
+Copy
+Edit
+{
+  "_id": "ObjectId",
+  "title": "City Cup Finals",
+  "sport": "soccer",
+  "isLive": true,
+  "videoUrl": "https://example.com/stream",
+  "thumbnailUrl": "https://example.com/thumb.jpg",
+  "startTime": "2024-04-28T18:00:00.000Z",
+  "endTime": "2024-04-28T20:00:00.000Z",
+  "createdAt": "2024-04-28T17:00:00.000Z",
+  "updatedAt": "2024-04-28T17:30:00.000Z"
+}
+Highlights Collection
+json
+Copy
+Edit
+{
+  "_id": "ObjectId",
+  "gameId": "ObjectId (Games._id)",
+  "title": "Amazing Goal at 75'",
+  "clipUrl": "https://example.com/highlight",
+  "thumbnailUrl": "https://example.com/highlight-thumb.jpg",
+  "createdAt": "2024-04-28T18:30:00.000Z"
+}
+8. APIs / Backend Functions
+
+API	Purpose
+GET /api/live	Fetch all live games
+GET /api/sports/[sport]	Fetch games by sport
+POST /api/upload	Submit a new game
+GET /api/highlights	Fetch highlights
+9. Monetization Strategy
+Google Ad Manager integration (serve pre-roll/mid-roll video ads).
+
+Sponsored content (future).
+
+Premium uploads/priority listing (future).
+
+10. Design Principles
+Simple and fast loading
+
+Mobile-first layout
+
+Big, clickable video cards
+
+Minimal text, visual-first experience
+
+Future-proof for scaling (new sports, leagues, events)
+
+✅ Summary
+This MVP focuses on fast launch and simplicity:
+
+4 core pages
+
+MongoDB database
+
+Next.js + Tailwind stack
+
+Streamlined upload flow
+
+Ads can be added after first live content batch is achieved
+
+✏️ Next Steps (Replit / AI builder instructions)
+Set up Next.js + Tailwind starter app
+
+Connect to MongoDB Atlas database
+
+Build /app/page.tsx homepage with sections
+
+Build /live, /sports/[sport], /upload pages
+
+Deploy to Vercel
+
