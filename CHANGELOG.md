@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/1godfrey/sports-streaming-app/compare/v1.1.0...v1.2.0) (2025-04-29)
+
+
+### Features
+
+* update ci workflow for PR open to main ([48e4ab8](https://github.com/1godfrey/sports-streaming-app/commit/48e4ab8fca2afcc12afe2e15aa76fbd03719b168))
+* update ci workflow for PR open to main ([d94d486](https://github.com/1godfrey/sports-streaming-app/commit/d94d486655d87eb8425f09c0b846a412f26a2594))
+
 ## [1.1.0](https://github.com/1godfrey/sports-streaming-app/compare/v1.0.0...v1.1.0) (2025-04-29)
 
 
