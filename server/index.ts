@@ -1,11 +1,28 @@
+import 'dotenv/config';
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import * as dotenv from 'dotenv';
+import { Pool } from 'pg';
+import { drizzle } from 'drizzle-orm/node-postgres';
+
+// Load environment variables from .env
+dotenv.config();
+
+// Initialize the database connection
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL, // Ensure this is in your .env file
+});
+console.log('Conencting to DB:', pool)
+const db = drizzle(pool);
 
 const app = express();
+
+// Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Custom logging middleware
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -36,35 +53,42 @@ app.use((req, res, next) => {
   next();
 });
 
+// Register routes and start server
 (async () => {
+  // Ensure the database connection is established
+  try {
+    await pool.connect();
+    log("Database connected successfully");
+  } catch (error) {
+    log(`Error connecting to the database: ${error.message}`);
+    process.exit(1); // Exit the application if DB connection fails
+  }
+
+  // Register routes
   const server = await registerRoutes(app);
 
+  // Global error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
-
     res.status(status).json({ message });
     throw err;
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // Vite setup (only for development)
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
+  // Start the server
   const port = 5000;
   server.listen({
     port,
     host: "0.0.0.0",
     reusePort: true,
   }, () => {
-    log(`serving on port ${port}`);
+    log(`Serving on port ${port}`);
   });
 })();

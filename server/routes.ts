@@ -22,8 +22,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/games", async (req: Request, res: Response) => {
     try {
       const games = await storage.getAllGames();
+      if (!games) {
+        return res.status(404).json({ message: "No games found" });
+      }
       res.json(games);
     } catch (error) {
+      console.error("Error fetching games:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching games" });
     }
   });
@@ -42,6 +46,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(game);
     } catch (error) {
+      console.error("Error fetching game:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching game" });
     }
   });
@@ -49,8 +54,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/live", async (req: Request, res: Response) => {
     try {
       const liveGames = await storage.getLiveGames();
+      if (!liveGames) {
+        return res.status(404).json({ message: "No live games found" });
+      }
       res.json(liveGames);
     } catch (error) {
+      console.error("Error fetching live games:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching live games" });
     }
   });
@@ -59,8 +68,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { sport } = req.params;
       const games = await storage.getGamesByFilters(sport);
+      if (!games || games.length === 0) {
+        return res.status(404).json({ message: `No games found for sport: ${sport}` });
+      }
       res.json(games);
     } catch (error) {
+      console.error("Error fetching games by sport:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching games by sport" });
     }
   });
@@ -79,6 +92,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ message: "Invalid game data", errors: error.errors });
       }
+      console.error("Error uploading game:", error); // Log the error for debugging
       res.status(500).json({ message: "Error uploading game" });
     }
   });
@@ -97,6 +111,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(game);
     } catch (error) {
+      console.error("Error updating views:", error); // Log the error for debugging
       res.status(500).json({ message: "Error updating views" });
     }
   });
@@ -105,8 +120,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/highlights", async (req: Request, res: Response) => {
     try {
       const highlights = await storage.getAllHighlights();
+      if (!highlights) {
+        return res.status(404).json({ message: "No highlights found" });
+      }
       res.json(highlights);
     } catch (error) {
+      console.error("Error fetching highlights:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching highlights" });
     }
   });
@@ -125,6 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(highlight);
     } catch (error) {
+      console.error("Error fetching highlight:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching highlight" });
     }
   });
@@ -136,13 +156,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // In a real app, we would handle file upload here
       // For now, we'll just use the provided clipUrl and thumbnailUrl
-      
       const newHighlight = await storage.createHighlight(validatedData);
       res.status(201).json(newHighlight);
     } catch (error) {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ message: "Invalid highlight data", errors: error.errors });
       }
+      console.error("Error creating highlight:", error); // Log the error for debugging
       res.status(500).json({ message: "Error creating highlight" });
     }
   });
@@ -161,6 +181,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(highlight);
     } catch (error) {
+      console.error("Error updating views:", error); // Log the error for debugging
       res.status(500).json({ message: "Error updating views" });
     }
   });
@@ -169,8 +190,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/teams", async (req: Request, res: Response) => {
     try {
       const teams = await storage.getAllTeams();
+      if (!teams) {
+        return res.status(404).json({ message: "No teams found" });
+      }
       res.json(teams);
     } catch (error) {
+      console.error("Error fetching teams:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching teams" });
     }
   });
@@ -189,6 +214,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json(team);
     } catch (error) {
+      console.error("Error fetching team:", error); // Log the error for debugging
       res.status(500).json({ message: "Error fetching team" });
     }
   });
@@ -204,6 +230,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (error instanceof z.ZodError) {
         return res.status(400).json({ message: "Invalid team data", errors: error.errors });
       }
+      console.error("Error creating team:", error); // Log the error for debugging
       res.status(500).json({ message: "Error creating team" });
     }
   });
