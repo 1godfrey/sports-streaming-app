@@ -15,18 +15,6 @@ Built for speed, simplicity, and scalability. Monetized through Google Ad Manage
 
 ---
 
-## 🛠️ Tech Stack
-
-| **Tech**       | **Details**                         |
-|----------------|-------------------------------------|
-| **Frontend**   | Next.js (App Router) + Tailwind CSS |
-| **Backend**    | Next.js Server Actions / API Routes|
-| **Database**   | MongoDB Atlas                       |
-| **Video Player** | React Player                      |
-| **Hosting**    | Vercel                              |
-
----
-
 ## 📦 Features
 
 - **Homepage**: Live Games, Highlights, Upload CTA
